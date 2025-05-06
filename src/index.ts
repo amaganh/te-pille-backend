@@ -1,9 +1,8 @@
 import "./lib/db";
+import cors from "cors";
 import express from "express";
-// import countryRoutes from "./routes/country";
 import gamesRoutes from "./routes/games";
 import usersRoutes from "./routes/users";
-import cors from "cors";
 
 const app = express();
 const port = process.env.PORT || 3333;
