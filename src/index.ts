@@ -3,9 +3,16 @@ import express from "express";
 // import countryRoutes from "./routes/country";
 import gamesRoutes from "./routes/games";
 import usersRoutes from "./routes/users";
+import cors from "cors";
 
 const app = express();
 const port = process.env.PORT || 3333;
+
+// Configurar CORS para permitir solo tu frontend
+app.use(cors({
+  origin: "https://te-pille.surge.sh",
+  credentials: true  // si usás cookies o headers de autenticación
+}));
 
 app.use(express.json());
 app.use(express.raw({ type: "application/vnd.custom-type" }));
