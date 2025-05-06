@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';
+// import cors from 'cors';
 
 import gameRoutes from './routes/games';
 import userRoutes from './routes/users';
@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost:27017/game';
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
 // Rutas separadas
