@@ -13,6 +13,7 @@ export interface GameDocument extends Document {
   owner?: Types.ObjectId;
   players: Types.ObjectId[];
   maxPlayers: number;
+  allowedMissionTypes: string[]
   status: 'pending' | 'active' | 'finished' | 'deleted';
   missions: GameMission[];
   missionsToAssign: number;
@@ -44,6 +45,7 @@ const GameSchema = new Schema<GameDocument>(
     missionsToWin: { type: Number, default: 3 },
     winners: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
+    allowedMissionTypes: [{ type: String, default: [] }]
   },
   {
     timestamps: true,

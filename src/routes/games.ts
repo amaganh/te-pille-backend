@@ -2,17 +2,15 @@ import express from 'express';
 import GameModel, { GameDocument } from '../models/Game';
 import { checkUser } from '../utils/checkUser';
 import { seedDefaultMissions } from '../utils/seedDefaultMissions';
-import MissionModel, { Mission } from '../models/Mission';
+import MissionModel from '../models/Mission';
 import { assignMissions } from '../utils/assignMissions';
-import { User } from '../models/User';
 import { mongoGameToApiFormat } from '../utils/mongoGameToApiFormat';
 
 const router = express.Router();
 
 // Crear juego nuevo
 router.post('/new', async (req, res) => {
-  const { name, userId } = req.body;
-
+  const { name, userId, allowedMissionTypes,missionsToAssign, maxPlayers, missionsToWin } = req.body;
   const user = await checkUser(userId);
   if (!user) return res.status(500).json({ error: 'User not allowed', data: req.body });
 
@@ -25,6 +23,10 @@ router.post('/new', async (req, res) => {
       code: gameCode,
       players: [user], // Asumiendo que jugadores son un array de nombres
       missions: [],
+      allowedMissionTypes,
+      missionsToAssign,
+      maxPlayers, 
+      missionsToWin,
       status: 'pending',
     });
 
@@ -124,6 +126,7 @@ router.post('/status/:id', async (req, res) => {
 
     res.json(game);
   } catch (err) {
+    console.error(err)
     res.status(500).json({ error: 'Error starting the game' });
   }
 });

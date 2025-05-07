@@ -3,12 +3,11 @@ import MissionModel from '../models/Mission';
 
 export async function assignMissions(game: GameDocument):Promise<GameMission[]> {
   // Asignar misiones aleatorias únicas a cada jugador
-  const generalMissions = await MissionModel.find({});
+  const generalMissions = await MissionModel.find({ type: { $in: game.allowedMissionTypes } });
   const usedMissionIds = new Set();
 
   for (const playerId of game.players) {
     const playerMissions = [];
-
     while (playerMissions.length < game.missionsToAssign) {
       const candidate = generalMissions[Math.floor(Math.random() * generalMissions.length)];
       if (!usedMissionIds.has(candidate._id.toString())) {
