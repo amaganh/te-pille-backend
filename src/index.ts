@@ -9,7 +9,7 @@ const port = process.env.PORT || 3333;
 
 // Configurar CORS para permitir solo tu frontend
 app.use(cors({
-  origin: "https://te-pille.surge.sh",
+  origin: "https://mesecrazy.netlify.app",
   credentials: true  // si usás cookies o headers de autenticación
 }));
 
