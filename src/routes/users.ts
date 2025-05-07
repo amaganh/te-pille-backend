@@ -21,15 +21,15 @@ router.post('/new', async (req, res) => {
     if(user)
       return res.status(500).json({ error: 'Username already exist' });
   } catch (err) {
-    res.status(500).json({ error: 'Error checkiing user' });
+    res.status(500).json({ error: 'Error checking user' });
   }
 
   try {
     const user = new UserModel({ username, pwd });
     await user.save();
     res.status(201).json(user);
-  } catch (err) {
-    res.status(500).json({ error: 'Error creating user' });
+  } catch (error) {
+    res.status(500).json({ error });
   }
 });
 
