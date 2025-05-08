@@ -28,8 +28,8 @@ router.post('/new', async (req, res) => {
     const user = new UserModel({ username, pwd });
     await user.save();
     res.status(201).json(user);
-  } catch (error) {
-    res.status(500).json({ error });
+  } catch (err) {
+    res.status(500).json({ error: 'Error creating user' });
   }
 });
 

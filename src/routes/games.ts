@@ -10,7 +10,7 @@ const router = express.Router();
 
 // Crear juego nuevo
 router.post('/new', async (req, res) => {
-  const { name, userId, allowedMissionTypes,missionsToAssign, maxPlayers, missionsToWin } = req.body;
+  const { name, userId, allowedMissionTypes, missionsToAssign, maxPlayers, missionsToWin } = req.body;
   const user = await checkUser(userId);
   if (!user) return res.status(500).json({ error: 'User not allowed', data: req.body });
 
@@ -25,7 +25,7 @@ router.post('/new', async (req, res) => {
       missions: [],
       allowedMissionTypes,
       missionsToAssign,
-      maxPlayers, 
+      maxPlayers,
       missionsToWin,
       status: 'pending',
     });
@@ -137,6 +137,31 @@ router.post('/status/:id', async (req, res) => {
 //   res.json(games);
 // });
 
+// UPDATE game from owner
+router.patch('/:id', async (req, res) => {
+  const { id } = req.params;
+  const { name, userId, allowedMissionTypes, missionsToAssign, maxPlayers, missionsToWin, finishGameAfterFirstWinner } = req.body;
+
+  try {
+    const _game = await GameModel.find({ owner: userId, _id: id })
+    if (!_game) return res.status(404).json({ error: 'Game not found' });
+
+    const game = _game[0]
+    if (game.status !== 'pending')
+      return res.status(404).json({ error: 'Only pending games can be updated' })
+    game.name = name
+    game.allowedMissionTypes = allowedMissionTypes
+    game.missionsToAssign = missionsToAssign
+    game.maxPlayers = maxPlayers
+    game.missionsToWin = missionsToWin
+    game.finishGameAfterFirstWinner = finishGameAfterFirstWinner
+    game.save()
+    res.json(mongoGameToApiFormat(game as unknown as GameDocument, userId));
+  } catch (err) {
+    res.status(500).json({ error: 'error updating game' })
+  }
+});
+
 // Obtener juego por ID
 router.post('/:id', async (req, res) => {
   const { userId } = req.body;
@@ -154,6 +179,26 @@ router.post('/:id', async (req, res) => {
 });
 
 // cambiar estado misión
+router.patch('/:gameId/reset', async (req, res) => {
+  const { gameId } = req.params;
+  const { userId } = req.body;
+
+  try {
+    const _game = await GameModel.find({ owner: userId, _id: gameId })
+    if (!_game) return res.status(404).json({ error: 'Game not found' });
+    const game = _game[0]
+    game.status = 'pending'
+    game.missions = [];
+    game.winners = [];
+    await game.save();
+    res.json(mongoGameToApiFormat(game as unknown as GameDocument, userId));
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// cambiar estado misión
 router.put('/:gameId/mission', async (req, res) => {
   const { gameId } = req.params;
   const { status, userId, missionId } = req.body;
@@ -168,7 +213,6 @@ router.put('/:gameId/mission', async (req, res) => {
 
     if (game.status !== 'active')
       return res.status(404).json({ error: 'El juego no esta activo' });
-
 
     const missionEntry = game.missions.find(
       (m) => m.mission._id.toString() === missionId && m.assignedTo?.toString() === userId
@@ -188,6 +232,9 @@ router.put('/:gameId/mission', async (req, res) => {
     // add or remove from winner list
     const hasWon = game.winners.map(String).includes(userId);
     if (playerSuccessCount >= game.missionsToWin) {
+      if (game.finishGameAfterFirstWinner) {
+        game.status = 'finished';
+      }
       if (!hasWon) game.winners.push(userId);
     } else if (hasWon) game.winners = game.winners.filter((w) => w._id !== userId);
 
@@ -242,11 +289,50 @@ router.post('/join/:code', async (req, res) => {
     const game = await GameModel.findOne({ code });
     if (!game) return res.status(404).json({ error: 'Game not found' });
 
+    if (game.status !== 'pending') {
+      return res.status(500).json({ error: 'Game already started/finished' })
+    }
+
+    if (game.players.length >= game.maxPlayers) {
+      return res.status(500).json({ error: 'Max players reached' })
+    }
+
     if (!game.players.includes(user.id)) {
       game.players.push(user.id);
       await game.save();
     } else {
       res.status(500).json({ error: 'User already joined' });
+    }
+
+    res.json(game);
+  } catch (err) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// salir de la partida
+router.post('/:code/leave', async (req, res) => {
+  const { code } = req.params;
+  const { userId } = req.body;
+
+  const user = await checkUser(userId);
+  if (!user) return res.status(500).json({ error: 'User not allowed', data: req.body });
+
+  try {
+    const games = await GameModel.find();
+
+    const game = await GameModel.findById(code);
+    if (!game) return res.status(404).json({ error: 'Game not found' });
+
+    if (game?.owner?.toString() === userId) {
+      return res.status(500).json({ error: "admin can't leave the game" });
+    }
+
+    if (!game.players.includes(user.id)) {
+      res.status(500).json({ error: 'User not joined' });
+    } else {
+      game.players = game.players.filter(u => u.toString() !== userId);
+      await game.save();
     }
 
     res.json(game);

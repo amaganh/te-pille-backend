@@ -14,6 +14,7 @@ export interface GameDocument extends Document {
   players: Types.ObjectId[];
   maxPlayers: number;
   allowedMissionTypes: string[]
+  finishGameAfterFirstWinner: boolean
   status: 'pending' | 'active' | 'finished' | 'deleted';
   missions: GameMission[];
   missionsToAssign: number;
@@ -45,7 +46,8 @@ const GameSchema = new Schema<GameDocument>(
     missionsToWin: { type: Number, default: 3 },
     winners: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
-    allowedMissionTypes: [{ type: String, default: [] }]
+    allowedMissionTypes: [{ type: String, default: [] }],
+    finishGameAfterFirstWinner: { type: Boolean, default: false }
   },
   {
     timestamps: true,
