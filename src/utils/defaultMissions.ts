@@ -1,4 +1,4 @@
-[
+export const defaultMissions = [
   { "name": "Logra que alguien te dé un abrazo", "type": "General" },
   { "name": "Pregunta a alguien que se ría fuerte", "type": "General" },
   { "name": "Pregunta a alguien que diga 'qué calor'", "type": "General" },
