@@ -3,8 +3,8 @@ import { Mission } from "../models/Mission"
 import { User } from "../models/User"
 
 export function mongoGameToApiFormat(g: GameDocument, uuid: string) {
-    const demoMode = process.env.DEMO_MODE || 0;
-
+    const DEMO_MODE = process.env.DEMO_MODE
+    const demoMode = DEMO_MODE?.toLowerCase() === "true" || DEMO_MODE?.toLowerCase() === "1" || DEMO_MODE?.toLowerCase() === "y" || DEMO_MODE?.toLowerCase() === "yes" || Number(DEMO_MODE) === 1
     return {
         ...g.toObject(),
         players: (g.players as unknown as User[]).map(p => {
