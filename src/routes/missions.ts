@@ -1,17 +1,42 @@
 import express from 'express';
 import Mission from '../models/Mission';
+import { seedDefaultMissions } from '../utils/seedDefaultMissions';
 
 const router = express.Router();
 
-// // GET /missions - List all missions
-// router.get('/', async (req, res) => {
-//   try {
-//     const missions = await Mission.find();
-//     res.json(missions);
-//   } catch (err) {
-//     res.status(500).json({ error: 'Failed to fetch missions' });
-//   }
-// });
+// GET /missions - List all missions
+router.get('/types', async (req, res) => {
+  await seedDefaultMissions()
+  try {
+    const types = await Mission.aggregate([
+      {
+        $group: {
+          _id: '$type', // Agrupa los documentos por el valor del campo 'type'
+          count: { $sum: 1 } // Cuenta el número de documentos en cada grupo
+        }
+      },
+      {
+        $project: {
+          _id: 0, // Oculta el campo _id generado por $group
+          type: '$_id', // Renombra el campo _id a 'type' para mayor claridad
+          count: 1 // Muestra el campo 'count'
+        }
+      }
+    ]);
+    res.json(types);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch missions' });
+  }
+});
+
+router.delete('/', async (req, res) => {
+  try {
+    const resultado = await Mission.deleteMany({});
+    res.json(resultado);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch missions' });
+  }
+});
 
 // // GET /missions/:id - Get mission by ID
 // router.get('/:id', async (req, res) => {

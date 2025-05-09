@@ -15,7 +15,15 @@ export function mongoGameToApiFormat(g: GameDocument, uuid: string) {
         }),
         missions: g.missions.filter(m => m.assignedTo as unknown as string == uuid).map((m) => {
             const mission = m.mission as unknown as Mission
-            return { _id: m.mission._id, status: m.status, type: mission.type, name: demoMode ? demo(mission.name) : mission.name }
+            const reviwer = m.reviwedBy as unknown as User
+
+            return { 
+                _id: m.mission._id, 
+                status: m.status, 
+                type: mission.type, 
+                name: demoMode ? demo(mission.name) : mission.name,
+                reviewer: reviwer ? reviwer.username : undefined
+             }
         }),
         winners: (g.winners as unknown as User[]).map((w) => {
             return w.username

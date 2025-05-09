@@ -10,7 +10,9 @@ const router = express.Router();
 
 // Crear juego nuevo
 router.post('/new', async (req, res) => {
-  const { name, userId, allowedMissionTypes, missionsToAssign, maxPlayers, missionsToWin } = req.body;
+  const { name, userId, allowedMissionTypes, missionsToAssign, maxPlayers, missionsToWin, winnersBeforeFinish, requireReviewer, allowJoinPlayerAfterStart } = req.body;
+
+
   const user = await checkUser(userId);
   if (!user) return res.status(500).json({ error: 'User not allowed', data: req.body });
 
@@ -27,6 +29,9 @@ router.post('/new', async (req, res) => {
       missionsToAssign,
       maxPlayers,
       missionsToWin,
+      winnersBeforeFinish,
+      requireReviewer,
+      allowJoinPlayerAfterStart,
       status: 'pending',
     });
 
@@ -140,7 +145,7 @@ router.post('/status/:id', async (req, res) => {
 // UPDATE game from owner
 router.patch('/:id', async (req, res) => {
   const { id } = req.params;
-  const { name, userId, allowedMissionTypes, missionsToAssign, maxPlayers, missionsToWin, finishGameAfterFirstWinner } = req.body;
+  const { name, userId, allowedMissionTypes, missionsToAssign, maxPlayers, missionsToWin, winnersBeforeFinish, requireReviewer, allowJoinPlayerAfterStart } = req.body;
 
   try {
     const _game = await GameModel.find({ owner: userId, _id: id })
@@ -153,8 +158,11 @@ router.patch('/:id', async (req, res) => {
     game.allowedMissionTypes = allowedMissionTypes
     game.missionsToAssign = missionsToAssign
     game.maxPlayers = maxPlayers
-    game.missionsToWin = missionsToWin
-    game.finishGameAfterFirstWinner = finishGameAfterFirstWinner
+    game.missionsToWin = missionsToWin,
+    game.winnersBeforeFinish = winnersBeforeFinish,
+    game.requireReviewer = requireReviewer
+    game.allowJoinPlayerAfterStart = allowJoinPlayerAfterStart
+
     game.save()
     res.json(mongoGameToApiFormat(game as unknown as GameDocument, userId));
   } catch (err) {
@@ -170,6 +178,13 @@ router.post('/:id', async (req, res) => {
     populate: {
       path: 'mission', // Dentro de cada GameMission, popula la referencia a la Mission
       model: 'Mission', // Especifica el modelo de la referencia
+    },
+  })
+  .populate({
+    path: 'missions', // Popula el array de misiones
+    populate: {
+      path: 'reviwedBy', // Dentro de cada GameMission, popula la referencia a la Mission
+      model: 'User', // Especifica el modelo de la referencia
     },
   });
   if (!game) return res.status(404).json({ error: 'Not found' });
@@ -202,6 +217,7 @@ router.patch('/:gameId/reset', async (req, res) => {
 router.put('/:gameId/mission', async (req, res) => {
   const { gameId } = req.params;
   const { status, userId, missionId } = req.body;
+  const reviewer = req.body.reviewer
 
   if (!['pending', 'success', 'fail'].includes(status)) {
     return res.status(400).json({ error: 'Invalid status value' });
@@ -211,8 +227,13 @@ router.put('/:gameId/mission', async (req, res) => {
     const game = await GameModel.findById(gameId)
     if (!game) return res.status(404).json({ error: 'Game not found' });
 
+    if (game.requireReviewer && !reviewer)
+      return res.status(404).json({ error: 'No se ha asigando revisor' });
+    if (game.requireReviewer && !reviewer === userId)
+      return res.status(404).json({ error: 'No se pueden autovalidar las misiones' });
+
     if (game.status !== 'active')
-      return res.status(404).json({ error: 'El juego no esta activo' });
+      return res.status(404).json({ error: 'El juego ya ha finalizado' });
 
     const missionEntry = game.missions.find(
       (m) => m.mission._id.toString() === missionId && m.assignedTo?.toString() === userId
@@ -221,7 +242,7 @@ router.put('/:gameId/mission', async (req, res) => {
     if (!missionEntry) {
       return res.status(404).json({ error: 'Mission not found for this player in this game' });
     }
-
+    missionEntry.reviwedBy = reviewer
     missionEntry.status = status;
 
     // Verificamos si el jugador alcanza el número necesario de misiones exitosas
@@ -232,10 +253,11 @@ router.put('/:gameId/mission', async (req, res) => {
     // add or remove from winner list
     const hasWon = game.winners.map(String).includes(userId);
     if (playerSuccessCount >= game.missionsToWin) {
-      if (game.finishGameAfterFirstWinner) {
+      if (!hasWon) game.winners.push(userId);
+      if (game.winnersBeforeFinish !== 0 && game.winners.length >= game.winnersBeforeFinish) {
         game.status = 'finished';
       }
-      if (!hasWon) game.winners.push(userId);
+
     } else if (hasWon) game.winners = game.winners.filter((w) => w._id !== userId);
 
     await game.save();
@@ -289,12 +311,16 @@ router.post('/join/:code', async (req, res) => {
     const game = await GameModel.findOne({ code });
     if (!game) return res.status(404).json({ error: 'Game not found' });
 
-    if (game.status !== 'pending') {
+    if (game.status !== 'pending' && game.allowJoinPlayerAfterStart === false) {
       return res.status(500).json({ error: 'Game already started/finished' })
     }
 
     if (game.players.length >= game.maxPlayers) {
       return res.status(500).json({ error: 'Max players reached' })
+    }
+    if (game.status !== 'pending') {
+      await assignMissions(game, userId)
+      await game.save();
     }
 
     if (!game.players.includes(user.id)) {
@@ -332,6 +358,7 @@ router.post('/:code/leave', async (req, res) => {
       res.status(500).json({ error: 'User not joined' });
     } else {
       game.players = game.players.filter(u => u.toString() !== userId);
+      game.missions = game.missions.filter(m => m.assignedTo.toString() !== userId);
       await game.save();
     }
 

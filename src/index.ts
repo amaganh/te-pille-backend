@@ -3,6 +3,7 @@ import cors from "cors";
 import express from "express";
 import gamesRoutes from "./routes/games";
 import usersRoutes from "./routes/users";
+import missionsRoutes from "./routes/missions";
 
 const app = express();
 const port = process.env.PORT || 3333;
@@ -24,6 +25,7 @@ app.get("/", async (req, res) => {
 // app.use("/countries", countryRoutes);
 app.use("/games", gamesRoutes);
 app.use("/users", usersRoutes);
+app.use("/missions", missionsRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

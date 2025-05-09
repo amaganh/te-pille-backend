@@ -5,6 +5,16 @@ export interface GameMission extends Document {
   mission: Types.ObjectId;
   assignedTo: Types.ObjectId;
   status: 'pending' | 'success' | 'fail';
+  reviwedBy?: Types.ObjectId;
+}
+
+
+export interface ExtraMissions extends Document {
+  mission: string;
+  assignedTo: Types.ObjectId;
+  assignedBy: Types.ObjectId;
+  status: 'pending' | 'success' | 'fail';
+  reviwedBy?: Types.ObjectId;
 }
 
 export interface GameDocument extends Document {
@@ -14,7 +24,10 @@ export interface GameDocument extends Document {
   players: Types.ObjectId[];
   maxPlayers: number;
   allowedMissionTypes: string[]
-  finishGameAfterFirstWinner: boolean
+  allowExtraMissions: boolean
+  allowJoinPlayerAfterStart: boolean
+  extraMissions:ExtraMissions[]
+  winnersBeforeFinish: number
   status: 'pending' | 'active' | 'finished' | 'deleted';
   missions: GameMission[];
   missionsToAssign: number;
@@ -22,12 +35,22 @@ export interface GameDocument extends Document {
   winners: Types.ObjectId[];
   createdAt: Date;
   updatedAt: Date;
+  requireReviewer:boolean
 }
+
+const ExtraMissionSchema = new Schema<ExtraMissions>({
+  mission: { type: String, required: true },
+  assignedTo: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  assignedBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  status: { type: String, enum: ['pending', 'success', 'fail'], default: 'pending' },
+  reviwedBy: { type:Schema.Types.ObjectId, ref: 'User'}
+});
 
 const GameMissionSchema = new Schema<GameMission>({
   mission: { type: Schema.Types.ObjectId, ref: 'Mission', required: true },
   assignedTo: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   status: { type: String, enum: ['pending', 'success', 'fail'], default: 'pending' },
+  reviwedBy: { type:Schema.Types.ObjectId, ref: 'User'}
 });
 
 const GameSchema = new Schema<GameDocument>(
@@ -42,13 +65,17 @@ const GameSchema = new Schema<GameDocument>(
       default: 'pending',
     },
     missions: [GameMissionSchema],
+    allowExtraMissions: { type: Boolean, default: true },
+    extraMissions: [ExtraMissionSchema],
     missionsToAssign: { type: Number, default: 6 },
     missionsToWin: { type: Number, default: 3 },
     winners: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
     allowedMissionTypes: [{ type: String, default: [] }],
-    finishGameAfterFirstWinner: { type: Boolean, default: false }
-  },
+    winnersBeforeFinish: { type: Number, default: 0 },
+    requireReviewer: { type: Boolean, default: true },
+    allowJoinPlayerAfterStart : { type: Boolean, default: true }
+},
   {
     timestamps: true,
   }
