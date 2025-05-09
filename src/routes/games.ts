@@ -265,7 +265,7 @@ router.put('/:gameId/mission', async (req, res) => {
     res.json({ message: 'Mission status updated', updatedMission: missionEntry });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Internal server error',err:err });
   }
 });
 
