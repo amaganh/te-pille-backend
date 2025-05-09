@@ -5,7 +5,6 @@ import { seedDefaultMissions } from '../utils/seedDefaultMissions';
 import MissionModel from '../models/Mission';
 import { assignMissions } from '../utils/assignMissions';
 import { mongoGameToApiFormat } from '../utils/mongoGameToApiFormat';
-import mongoose from 'mongoose';
 
 const router = express.Router();
 
@@ -216,8 +215,6 @@ router.patch('/:gameId/reset', async (req, res) => {
 
 // cambiar estado misión
 router.put('/:gameId/mission', async (req, res) => {
-  console.log(req.body)
-  console.log(req.params)
   const { gameId } = req.params;
   const { status, userId, missionId } = req.body;
   const reviewer = req.body.reviewer
@@ -244,7 +241,7 @@ router.put('/:gameId/mission', async (req, res) => {
     if (!missionEntry) {
       return res.status(404).json({ error: 'Mission not found for this player in this game' });
     }
-    missionEntry.reviwedBy = (reviewer) ? new mongoose.Types.ObjectId(reviewer) : undefined;
+    missionEntry.reviwedBy = reviewer;
     missionEntry.status = status;
 
     // Verificamos si el jugador alcanza el número necesario de misiones exitosas

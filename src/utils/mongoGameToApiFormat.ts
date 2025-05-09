@@ -9,6 +9,7 @@ export function mongoGameToApiFormat(g: GameDocument, uuid: string) {
         ...g.toObject(),
         players: (g.players as unknown as User[]).map(p => {
             return {
+                _id: p._id,
                 username: p.username,
                 wins: g.missions.filter(m => m.assignedTo._id.toString() === p._id.toString() && m.status == "success").length
             }
