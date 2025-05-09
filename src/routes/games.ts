@@ -216,10 +216,11 @@ router.patch('/:gameId/reset', async (req, res) => {
 
 // cambiar estado misión
 router.put('/:gameId/mission', async (req, res) => {
+  console.log(req.body)
+  console.log(req.params)
   const { gameId } = req.params;
   const { status, userId, missionId } = req.body;
   const reviewer = req.body.reviewer
-
   if (!['pending', 'success', 'fail'].includes(status)) {
     return res.status(400).json({ error: 'Invalid status value' });
   }
@@ -265,7 +266,7 @@ router.put('/:gameId/mission', async (req, res) => {
     res.json({ message: 'Mission status updated', updatedMission: missionEntry });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Internal server error',err:err });
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
