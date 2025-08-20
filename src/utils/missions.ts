@@ -793,143 +793,143 @@ export const missions =   [
   },
   {
     "name": "Coloca discretamente un objeto pequeño (ej. una moneda, un clip) en el bolsillo o bolso de alguien.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Consigue que la conversación de un grupo cambie a un tema que tú elijas sin que nadie note que tú la has dirigido.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Intercambia los vasos de dos personas sin que se den cuenta (solo si beben lo mismo y es seguro hacerlo).",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Haz un cumplido a alguien de tal forma que piense que es 100% sincero y no parte de un juego.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Coge un objeto sin valor de la mesa (ej. una servilleta) y haz que alguien note su ausencia más tarde preguntando '¿Y lo que había aquí?'.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Consigue que alguien diga una palabra específica y poco común (ej. 'efímero', 'bambú') de forma natural en una conversación.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Aprende un secreto o un dato personal de alguien sin preguntárselo directamente, solo escuchando conversaciones.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Consigue que alguien te corrija sobre un dato evidentemente falso que has dicho a propósito.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Logra sentarte en el sitio de alguien justo después de que se levante, de forma que parezca completamente natural.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Imita sutilmente la postura y los gestos de alguien durante un minuto entero sin que lo note.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Introduce una palabra o muletilla tuya en la conversación y consigue que otra persona la use más tarde.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Averigua el segundo nombre de alguien preguntándoselo a una tercera persona.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Mueve un objeto personal de alguien (llaves, móvil) a un lugar cercano (máx. 1 metro) sin que se dé cuenta inmediatamente.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Consigue que dos personas que no se conocen se presenten entre sí gracias a una introducción indirecta tuya.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Deja un objeto pequeño y extraño (ej. una figura de Lego) en un lugar donde sepas que alguien lo encontrará, y observa su reacción sin delatarte.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Consigue que alguien te guarde un sitio (en la barra, en una silla) sin pedírselo explícitamente.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Gira 90 grados un cuadro o un objeto decorativo de la pared sin que nadie te vea hacerlo.",
-    "type": "Sigilo"
+    "type": "General"
   },
   {
     "name": "Consigue que alguien te deje ponerle un apodo gracioso a tu contacto en su móvil.",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Aparece de fondo (photobomb) en la selfie de otro grupo y consigue que la suban a una red social.",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Pide el móvil a alguien para 'buscar algo' y déjale abierta una búsqueda absurda (ej. 'cuánto pesa un fantasma').",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Consigue que alguien te envíe un emoji específico (🍆, 🍑, 🤡) por mensaje directo.",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Logra que alguien te muestre su foto con más 'likes' en Instagram.",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Reta a alguien a enviarle un mensaje de voz a su madre diciendo 'te quiero' en ese mismo momento.",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Consigue que alguien ponga una canción que tú elijas usando su cuenta de Spotify (o similar).",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Pídele a alguien que te haga una foto y consigue que se la quede en su propia galería.",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Consigue que alguien te etiquete en una historia de Instagram.",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Envíale por Airdrop (o similar) un meme a un desconocido y consigue que reaccione.",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Consigue que alguien te muestre su lista de emojis más usados.",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Convence a alguien para grabar un TikTok/Reel corto y tonto contigo (no es necesario publicarlo).",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Pídele el móvil a alguien y cambia el idioma del teclado sin que se dé cuenta de inmediato.",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Consigue que alguien te envíe un GIF que resuma su día o su estado de ánimo actual.",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Consigue que alguien te agregue a un grupo de WhatsApp (aunque sea temporalmente).",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Reta a alguien a encontrar tu perfil de Instagram buscando solo 3 palabras clave que tú le des.",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Consigue que alguien ponga un recordatorio absurdo en su móvil para el día siguiente (ej. 'Comprar agua para el pez').",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Usa el Shazam de alguien para identificar la canción que está sonando.",
-    "type": "Digital"
+    "type": "General"
   },
   {
     "name": "Crea un saludo secreto de tres pasos con otra persona y hacedlo en público.",
