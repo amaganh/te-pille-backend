@@ -452,14 +452,6 @@ export const missions =   [
     "type": "General"
   },
   {
-    "name": "Intenta convencer a alguien de que puedes predecir el futuro de forma extraña.",
-    "type": "General"
-  },
-  {
-    "name": "Pregúntale a alguien (con seriedad) si ha visto un unicornio últimamente.",
-    "type": "General"
-  },
-  {
     "name": "Actúa como si estuvieras hablando por un teléfono invisible.",
     "type": "General"
   },
@@ -500,10 +492,6 @@ export const missions =   [
     "type": "General"
   },
   {
-    "name": "Intenta convencer a alguien de que eres un viajero del tiempo.",
-    "type": "General"
-  },
-  {
     "name": "Pregúntale a alguien cuál es el objeto más raro que posee.",
     "type": "General"
   },
@@ -524,10 +512,6 @@ export const missions =   [
     "type": "General"
   },
   {
-    "name": "Intenta convencer a alguien de que puedes hablar con los animales.",
-    "type": "General"
-  },
-  {
     "name": "Empieza a silbar una melodía pegadiza y luego olvida cómo sigue.",
     "type": "General"
   },
@@ -541,10 +525,6 @@ export const missions =   [
   },
   {
     "name": "Haz como si estuvieras a punto de revelar un gran secreto pero te callas.",
-    "type": "General"
-  },
-  {
-    "name": "Intenta convencer a alguien de que tienes poderes psíquicos menores.",
     "type": "General"
   },
   {
@@ -792,6 +772,26 @@ export const missions =   [
     "type": "General"
   },
   {
+    "name": "Inicia una 'ola' (como en un estadio) con al menos 3 personas.",
+    "type": "General"
+  },
+  {
+    "name": "Consigue que alguien te dé su 'autógrafo' en una servilleta.",
+    "type": "General"
+  },
+  {
+    "name": "Pregúntale la hora a alguien y añade el requisito '...pero no puedes mirar el móvil ni el reloj'.",
+    "type": "General"
+  },
+  {
+    "name": "Consigue que tres personas diferentes te choquen la mano ('high five') en menos de un minuto.",
+    "type": "General"
+  },
+  {
+    "name": "Menciona una película poco conocida y encuentra a alguien que también la haya visto.",
+    "type": "General"
+  },
+  {
     "name": "Coloca discretamente un objeto pequeño (ej. una moneda, un clip) en el bolsillo o bolso de alguien.",
     "type": "Sigilo"
   },
@@ -808,11 +808,11 @@ export const missions =   [
     "type": "Sigilo"
   },
   {
-    "name": "Coge un objeto sin valor de la mesa (ej. una servilleta) y haz que alguien note su ausencia más tarde preguntando \"¿Y lo que había aquí?\".",
+    "name": "Coge un objeto sin valor de la mesa (ej. una servilleta) y haz que alguien note su ausencia más tarde preguntando '¿Y lo que había aquí?'.",
     "type": "Sigilo"
   },
   {
-    "name": "Consigue que alguien diga una palabra específica y poco común (ej. \"efímero\", \"bambú\") de forma natural en una conversación.",
+    "name": "Consigue que alguien diga una palabra específica y poco común (ej. 'efímero', 'bambú') de forma natural en una conversación.",
     "type": "Sigilo"
   },
   {
@@ -868,7 +868,7 @@ export const missions =   [
     "type": "Digital"
   },
   {
-    "name": "Pide el móvil a alguien para \"buscar algo\" y déjale abierta una búsqueda absurda (ej. \"cuánto pesa un fantasma\").",
+    "name": "Pide el móvil a alguien para 'buscar algo' y déjale abierta una búsqueda absurda (ej. 'cuánto pesa un fantasma').",
     "type": "Digital"
   },
   {
@@ -876,11 +876,11 @@ export const missions =   [
     "type": "Digital"
   },
   {
-    "name": "Logra que alguien te muestre su foto con más \"likes\" en Instagram.",
+    "name": "Logra que alguien te muestre su foto con más 'likes' en Instagram.",
     "type": "Digital"
   },
   {
-    "name": "Reta a alguien a enviarle un mensaje de voz a su madre diciendo \"te quiero\" en ese mismo momento.",
+    "name": "Reta a alguien a enviarle un mensaje de voz a su madre diciendo 'te quiero' en ese mismo momento.",
     "type": "Digital"
   },
   {
@@ -924,7 +924,7 @@ export const missions =   [
     "type": "Digital"
   },
   {
-    "name": "Consigue que alguien ponga un recordatorio absurdo en su móvil para el día siguiente (ej. \"Comprar agua para el pez\").",
+    "name": "Consigue que alguien ponga un recordatorio absurdo en su móvil para el día siguiente (ej. 'Comprar agua para el pez').",
     "type": "Digital"
   },
   {
@@ -973,7 +973,7 @@ export const missions =   [
   },
   {
     "name": "Consigue que alguien te ayude a escribir la letra para el estribillo de una canción inventada.",
-    "type":- "Creativa"
+    "type": "Creativa"
   },
   {
     "name": "Crea la 'banda sonora' de la noche con alguien, asignando una canción a tres personas diferentes del grupo.",
@@ -981,7 +981,7 @@ export const missions =   [
   },
   {
     "name": "Construye la torre más alta posible usando solo objetos de la mesa y consigue que alguien la nombre oficialmente.",
-    "type": "Creativa"
+    "type":- "Creativa"
   },
   {
     "name": "Inventa un rumor inofensivo y elabora los detalles con la ayuda de otra persona.",
@@ -1396,6 +1396,34 @@ export const missions =   [
     "type": "Fiesta"
   },
   {
+    "name": "Inicia una conga con al menos 4 personas más.",
+    "type": "Fiesta"
+  },
+  {
+    "name": "Nombra a alguien el 'DJ oficial' y consigue que ponga tres canciones seguidas que tú le pidas.",
+    "type": "Fiesta"
+  },
+  {
+    "name": "Consigue que alguien use una pieza de fruta (ej. un plátano) como si fuera un teléfono durante una conversación.",
+    "type": "Fiesta"
+  },
+  {
+    "name": "Organiza una ronda de 'Simón Dice' y consigue que al menos 4 personas jueguen y tú seas 'Simón'.",
+    "type": "Fiesta"
+  },
+  {
+    "name": "Propón una 'norma de la casa' ridícula (ej. 'hay que hablar cantando') y consigue que la mayoría la siga durante 5 minutos.",
+    "type": "Fiesta"
+  },
+  {
+    "name": "Haz un brindis por algo completamente mundano (ej. '¡Por las sillas, que tanto nos han aguantado!') y consigue que el resto brinde contigo.",
+    "type": "Fiesta"
+  },
+  {
+    "name": "Crea un 'trono' para alguien usando cojines o sillas y consigue que se siente en él como si fuera de la realeza.",
+    "type": "Fiesta"
+  },
+  {
     "name": "Consigue que alguien te dé un pico en el cuello.",
     "type": "Picante"
   },
@@ -1588,7 +1616,7 @@ export const missions =   [
     "type": "Picante"
   },
   {
-    "name": "Consigue que un jugador te pida que le hagas un guiño.",
+    "name": "Consigue que un jugador te pida que le guiñes un ojo.",
     "type": "Picante"
   },
   {
@@ -1624,19 +1652,11 @@ export const missions =   [
     "type": "Picante"
   },
   {
-    "name": "Consigue que un jugador te dé un guiño subido de tono.",
-    "type": "Picante"
-  },
-  {
     "name": "Consigue que un jugador te toque la mano de forma sugerente.",
     "type": "Picante"
   },
   {
     "name": "Consigue que un jugador te cuente un sueño subido de tono.",
-    "type": "Picante"
-  },
-  {
-    "name": "Consigue que un jugador te dé un abrazo por detrás.",
     "type": "Picante"
   },
   {
@@ -1658,7 +1678,6 @@ export const missions =   [
   {
     "name": "Consigue que un jugador te cuente una aventura romántica.",
     "type": "Picante"
-
   },
   {
     "name": "Consigue que un jugador te bese en la mano.",
@@ -1725,11 +1744,35 @@ export const missions =   [
     "type": "Picante"
   },
   {
-    "name": "Convence a alguien de que eres un espía y consigue que te dé un 'código secreto' inventado.",
-    "type": "Dificil"
+    "name": "Consigue que alguien te dé un beso lento en la mejilla, muy cerca de la comisura de los labios.",
+    "type": "Picante"
   },
   {
-    "name": "Haz que un grupo de 3+ personas discuta sobre un tema absurdo que inventes (ej: si las nubes son comestibles).",
+    "name": "Baila una canción lenta con alguien, manteniendo el contacto visual durante la mayor parte del tiempo.",
+    "type": "Picante"
+  },
+  {
+    "name": "Consigue que alguien te describa su 'cita perfecta' y que la descripción se parezca a algo que podríais hacer juntos.",
+    "type": "Picante"
+  },
+  {
+    "name": "Consigue que alguien te permita ponerle una gota de tu bebida en los labios.",
+    "type": "Picante"
+  },
+  {
+    "name": "Pídele a alguien que te cuente la historia de su primer beso con detalle.",
+    "type": "Picante"
+  },
+  {
+    "name": "Consigue que alguien te abroche o desabroche una prenda (un botón, una cremallera) lentamente.",
+    "type": "Picante"
+  },
+  {
+    "name": "Traza una línea con tu dedo sobre el brazo de alguien mientras le hablas y consigue que no lo aparte.",
+    "type": "Picante"
+  },
+  {
+    "name": "Consigue que un grupo de 3+ personas discuta sobre un tema absurdo que inventes (ej: si las nubes son comestibles).",
     "type": "Dificil"
   },
   {
@@ -1737,19 +1780,7 @@ export const missions =   [
     "type": "Dificil"
   },
   {
-    "name": "Convence a alguien de que un objeto cotidiano es un artefacto alienígena y consigue que lo 'analice' contigo.",
-    "type": "Dificil"
-  },
-  {
     "name": "Finge leer el futuro y consigue que alguien te pida una predicción sobre su vida.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Consigue que alguien te ayude a 'esconderte' de un enemigo imaginario.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Convence a alguien de que eres un viajero del tiempo y consigue que te pregunte sobre el futuro.",
     "type": "Dificil"
   },
   {
@@ -1757,27 +1788,7 @@ export const missions =   [
     "type": "Dificil"
   },
   {
-    "name": "Convence a alguien de que eres un chef famoso y consigue que te pida una receta inventada.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Convence a alguien de que eres un adivino y consigue que te dé un objeto personal para 'leerlo'.",
-    "type": "Dificil"
-  },
-  {
     "name": "Consigue que un grupo de 3+ personas imite un desfile militar siguiendo tus órdenes.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Convence a alguien de que eres un mago y consigue que te pida que hagas un 'hechizo' con un objeto.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Consigue que alguien te crea cuando dices que eres un extraterrestre amigable y te haga preguntas sobre tu 'planeta'.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Convence a alguien de que eres un gurú espiritual y consigue que te pida un consejo místico.",
     "type": "Dificil"
   },
   {
@@ -1785,39 +1796,11 @@ export const missions =   [
     "type": "Dificil"
   },
   {
-    "name": "Convence a alguien de que eres un superhéroe retirado y consigue que te cuente una de sus 'misiones'.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Convence a alguien de que eres un cazafantasmas y consigue que te pida 'investigar' un lugar.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Convence a alguien de que eres un poeta maldito y consigue que te pida que recites un poema inventado.",
-    "type": "Dificil"
-  },
-  {
     "name": "Consigue que un grupo de 3+ personas forme una 'banda' y toque instrumentos imaginarios.",
     "type": "Dificil"
   },
   {
-    "name": "Convence a alguien de que eres un caballero medieval y consigue que te jure lealtad.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Consigue que un grupo de 4+ personas represente una 'batalla épica' con objetos cotidianos.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Convence a alguien de que eres un pirata retirado y consigue que te pida que cuentes una de sus aventuras.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Convence a alguien de que eres un chamán y consigue que te pida hacer un 'ritual' absurdo.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Convence a alguien de que eres un ninja retirado y consigue que te enseñe un 'movimiento secreto'.",
+    "name": "Consigue que un grupo de 4+ personas tenga una 'batalla' con objetos cotidianos.",
     "type": "Dificil"
   },
   {
@@ -1825,19 +1808,7 @@ export const missions =   [
     "type": "Dificil"
   },
   {
-    "name": "Convence a alguien de que eres un criptozoólogo y consigue que te ayude a buscar una 'criatura mítica'.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Convence a alguien de que eres un druida y consigue que te pida hacer un 'encantamiento'.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Convence a alguien de que eres un trovador y consigue que te pida que cantes una balada inventada.",
-    "type": "Dificil"
-  },
-  {
-    "name": "Consigue que un grupo de 4+ personas cree y realice una coreografía ridícula contigo.",
+    "name": "Consigue que un grupo de 4+ personas realice una coreografía ridícula contigo.",
     "type": "Dificil"
   },
   {
@@ -1906,6 +1877,38 @@ export const missions =   [
   },
   {
     "name": "Consigue que alguien te confiese su aventura más atrevida y te pida que guardes el secreto.",
+    "type": "Dificil"
+  },
+  {
+    "name": "Consigue que todo el grupo guarde silencio absoluto durante 30 segundos.",
+    "type": "Dificil"
+  },
+  {
+    "name": "Intercambia los zapatos de dos personas diferentes sin que se den cuenta de inmediato.",
+    "type": "Dificil"
+  },
+  {
+    "name": "Consigue que alguien te intercambie una prenda de vestir (chaqueta, gorra, etc.) durante 10 minutos.",
+    "type": "Dificil"
+  },
+  {
+    "name": "Organiza una 'entrega de premios' improvisada y entrega tres trofeos absurdos (usando objetos cotidianos) a tres personas, que deberán dar un discurso de aceptación.",
+    "type":- "Dificil"
+  },
+  {
+    "name": "Consigue que un grupo de 5 o más personas se haga una foto contigo posando como si fuerais una banda de rock.",
+    "type": "Dificil"
+  },
+  {
+    "name": "Haz que tres personas diferentes te hagan el mismo cumplido (ej. 'qué bien hueles') sin haberlo pedido ni hablado entre ellas.",
+    "type": "Dificil"
+  },
+  {
+    "name": "Inicia un rumor inofensivo sobre ti mismo y consigue que, más tarde, otra persona te pregunte sobre ello.",
+    "type": "Dificil"
+  },
+  {
+    "name": "Logra que la fiesta se mueva de una habitación/zona a otra siguiendo una excusa que tú te inventes.",
     "type": "Dificil"
   }
 ]
