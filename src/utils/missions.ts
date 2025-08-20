@@ -933,71 +933,71 @@ export const missions =   [
   },
   {
     "name": "Crea un saludo secreto de tres pasos con otra persona y hacedlo en público.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Consigue que alguien escriba contigo un haiku (poema 5-7-5 sílabas) sobre un tema ridículo.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Usa objetos de la mesa para construir una pequeña escultura y consigue que alguien le ponga un nombre oficial.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Inventa un apodo para otro jugador y consigue que al menos tres personas diferentes lo usen para referirse a él/ella.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Coreografía un baile corto con otra persona y grabadlo en vídeo.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Dibuja el retrato de alguien en una servilleta y consigue que esa persona lo firme como si fuera una obra de arte.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Inventa un brindis en forma de rima y consigue que otra persona lo diga contigo en voz alta.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Crea una historia con alguien, cada uno diciendo solo una palabra alternativamente, hasta contar con 10 palabras en total.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Diseña un cóctel imaginario con otra persona, incluyendo nombre, ingredientes y una historia de fondo.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Inventa un superhéroe absurdo con alguien, definiendo su poder, su nombre y su némesis.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Consigue que alguien te ayude a escribir la letra para el estribillo de una canción inventada.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Crea la 'banda sonora' de la noche con alguien, asignando una canción a tres personas diferentes del grupo.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Construye la torre más alta posible usando solo objetos de la mesa y consigue que alguien la nombre oficialmente.",
-    "type":- "Creativa"
+    "type":- "General"
   },
   {
     "name": "Inventa un rumor inofensivo y elabora los detalles con la ayuda de otra persona.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Rediseña la bandera de un país con alguien usando solo una servilleta y un bolígrafo.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Crea un nuevo 'signo del zodiaco' y consigue que alguien te ayude a definir sus características principales.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Inventa el eslogan para la campaña presidencial de uno de los jugadores y consigue que este lo apruebe.",
-    "type": "Creativa"
+    "type": "General"
   },
   {
     "name": "Reta a un jugador a un juego de beber y jugad al menos una ronda.",
