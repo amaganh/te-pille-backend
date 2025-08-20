@@ -5,7 +5,7 @@ import { seedDefaultMissions } from '../utils/seedDefaultMissions';
 import MissionModel from '../models/Mission';
 import { assignMissions } from '../utils/assignMissions';
 import { mongoGameToApiFormat } from '../utils/mongoGameToApiFormat';
-
+ 
 const router = express.Router();
 
 // Crear juego nuevo
